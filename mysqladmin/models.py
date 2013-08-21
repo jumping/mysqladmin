@@ -49,10 +49,12 @@ class DbRds(models.Model):
 class InstanceHistory(models.Model):
     id = models.AutoField(primary_key=True)
     status = models.CharField(max_length=45L)
-    instance_info = models.ForeignKey('InstanceInfo')
+    instance_info_id = models.ForeignKey('InstanceInfo')
     update_at = models.DateTimeField(auto_now=True, editable=False)
     class Meta:
         db_table = 't_instance_history'
+    def __unicode__(self):
+        return u'%s  %s' %(self.instance_info_id, self.status)
 
 class InstanceInfo(models.Model):
     id = models.AutoField(primary_key=True,unique=True)

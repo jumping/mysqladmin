@@ -73,6 +73,13 @@ def main():
             if created:
                 log.info("Created new {0} :\n {1}".format(instance, value))
 
+            #save history
+            history = mysqladmin.models.InstanceHistory()
+            history.status = value[11]
+            instance_info_id = mysqladmin.models.InstanceInfo.objects.get(id=obj.id)
+            history.instance_info_id = instance_info_id
+            history.save()
+
 
 if __name__ == '__main__':
     log.info('Starting')
