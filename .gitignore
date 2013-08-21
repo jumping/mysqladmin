@@ -8,3 +8,4 @@ bpo/*
 .idea/*
 .Python/*
 *.DS_Store/*
+manage.py
