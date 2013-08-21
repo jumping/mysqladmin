@@ -18,6 +18,8 @@ class DbHost(models.Model):
     update_at = models.DateTimeField(auto_now=True, editable=False)
     class Meta:
         db_table = 't_db_host'
+    def __unicode__(self):
+        return u'%s  %s   %s' %(self.dbname, self.db_instance, self.db_rds)
 
 class DbInstance(models.Model):
     id = models.AutoField(primary_key=True,unique=True)
@@ -77,6 +79,8 @@ class InstanceInfo(models.Model):
     update_at = models.DateTimeField(auto_now=True, editable=False)
     class Meta:
         db_table = 't_instance_info'
+    def __unicode__(self):
+        return u'%s  %s   %s   %s' %(self.instance_id, self.instance_type, self.state, self.tags)
 
 class UserDb(models.Model):
     id = models.AutoField(primary_key=True)
