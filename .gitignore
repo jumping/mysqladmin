@@ -1,0 +1,10 @@
+*.pyc
+.swp
+*.log
+bin/*
+lib/*
+include/*
+bpo/*
+.idea/*
+.Python/*
+*.DS_Store/*
