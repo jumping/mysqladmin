@@ -6,6 +6,6 @@ lib/*
 include/*
 bpo/*
 .idea/*
-.Python/*
-*.DS_Store/*
+.Python
+.DS_Store
 manage.py
