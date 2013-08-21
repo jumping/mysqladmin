@@ -14,8 +14,6 @@ from base import *
 
 import logging
 
-formatter = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-log = logging.basicConfig(format=formatter,level='INFO')
 log = logging.getLogger(__name__)
 
 def scan(region):
