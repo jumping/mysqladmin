@@ -27,7 +27,7 @@ def scan(region):
             instance_id = instance.id
             if not instance.key_name:
                 print "%s key_name is empty. " % instance_id
-                key_name = 'BPO'
+                key_name = 'MissingKey'
             else:
                 key_name = instance.key_name
             running_instances[instance_id] = ( instance.instance_type, instance.ip_address,
