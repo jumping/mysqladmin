@@ -12,6 +12,12 @@ import boto.ec2
 
 from base import *
 
+import logging
+
+formatter = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+log = logging.basicConfig(format=formatter,level='INFO')
+log = logging.getLogger(__name__)
+
 def scan(region):
     '''
     '''
@@ -26,7 +32,7 @@ def scan(region):
         for instance in reservation.instances:
             instance_id = instance.id
             if not instance.key_name:
-                print "%s key_name is empty. " % instance_id
+                log.warning("%s key_name is empty. " % instance_id)
                 key_name = 'MissingKey'
             else:
                 key_name = instance.key_name
@@ -65,12 +71,12 @@ def main():
                 'architecture':value[15],'persistent':value[16],
                 'ramdisk':value[17],'kernel':value[18]})
             if created:
-                print "%s created new" % instance
+                log.info("Created new {0} :\n {1}".format(instance, value))
 
 
 if __name__ == '__main__':
-    #logger = logging.getLogger(__name__)
-    #logger.error('main')
+    log.info('Starting')
     main()
+    log.info('End')
 
 
