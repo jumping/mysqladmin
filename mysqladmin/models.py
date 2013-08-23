@@ -23,7 +23,7 @@ class DbHost(models.Model):
 
 class DbInstance(models.Model):
     id = models.AutoField(primary_key=True,unique=True)
-    instance_id = models.CharField(max_length=45L, unique=True)
+    instance_id = models.ForeignKey('InstanceInfo')
     master_user = models.CharField(max_length=45L)
     master_password = models.CharField(max_length=45L)
     update_at = models.DateTimeField(auto_now=True, editable=False)
@@ -45,6 +45,8 @@ class DbRds(models.Model):
     update_at = models.DateTimeField(auto_now=True, editable=False)
     class Meta:
         db_table = 't_db_rds'
+    def __unicode__(self):
+        return u'%s  %s   %s' %(self.endpoint, self.storage, self.zone)
 
 class InstanceHistory(models.Model):
     id = models.AutoField(primary_key=True)
